@@ -191,12 +191,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="lp-wrapper">
-      {/* Header */}
+    <>
+      {/* Header - full width */}
       <div className="h1_title">
         <h1>美VARI Beauty Salon 四条烏丸整体院｜ダイエット</h1>
       </div>
 
+    <div className="lp-wrapper">
       <div className="lp-content">
         {/* FV */}
         <img src={IMG.fv} alt="運動なし-8kgへの近道" className="m0-b" />
@@ -641,19 +642,20 @@ export default function Home() {
             <CtaButtons />
           </div>
         </section>
-      </div>
+      </div>{/* end lp-content */}
+    </div>{/* end lp-wrapper */}
 
-      {/* フッター */}
-      <footer className="lp-footer">
-        <p>© ダイエットメニュー</p>
-      </footer>
+    {/* フッター */}
+    <footer className="lp-footer">
+      <p>© ダイエットメニュー</p>
+    </footer>
 
-      {/* フローティングCTAボタン */}
-      <div className={`footer-btn ${showCta ? "visible" : ""}`}>
-        <a href={LINE_URL} target="_blank" rel="noopener noreferrer">
-          <img src={IMG.footBtn} alt="体験お申し込みはこちらから" loading="lazy" />
-        </a>
-      </div>
+    {/* フローティングCTAボタン */}
+    <div className={`footer-btn ${showCta ? "visible" : ""}`}>
+      <a href={LINE_URL} target="_blank" rel="noopener noreferrer">
+        <img src={IMG.footBtn} alt="体験お申し込みはこちらから" loading="lazy" />
+      </a>
     </div>
+    </>
   );
 }

@@ -28,7 +28,11 @@ body {
   font-size: 1.6rem;
   line-height: 1.8;
   color: #333;
-  background: #fff;
+  background-image: url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663031725279/iobTCxqeSZknJHEF.webp');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f5e8e4;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -99,6 +103,7 @@ p:empty { display: none; }
   overflow: hidden;
   background: #fff;
   position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 }
 
 .lp-content {
@@ -109,6 +114,7 @@ p:empty { display: none; }
 .h1_title {
   background: var(--pink);
   width: 100%;
+  position: relative;
 }
 
 .h1_title h1 {
