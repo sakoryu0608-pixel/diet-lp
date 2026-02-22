@@ -3,181 +3,1723 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
+/* ===== Original LP Styles ===== */
 
 :root {
-  --primary: oklch(0.637 0.182 16.145);
-  --primary-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.637 0.182 16.145);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --chart-1: oklch(0.637 0.182 16.145);
-  --chart-2: oklch(0.7 0.15 16);
-  --chart-3: oklch(0.55 0.2 16);
-  --chart-4: oklch(0.8 0.1 16);
-  --chart-5: oklch(0.45 0.2 16);
-  --radius: 0.5rem;
-  --background: oklch(0.961 0.002 106.424);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.637 0.182 16.145);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.637 0.182 16.145);
+  --red: #C1272D;
+  --pink: #F4777C;
+  --dark-pink: #E85F58;
+  --yellow: #FFF39B;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@layer components {
-  .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .flex {
-    min-height: 0;
-    min-width: 0;
-  }
-
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      max-width: 1280px;
-    }
-  }
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
 }
 
-/* CTA Button Bounce Animation */
-@keyframes ctaBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  15% {
-    transform: translateY(-12px);
-  }
-  30% {
-    transform: translateY(0);
-  }
-  45% {
-    transform: translateY(-6px);
-  }
-  60% {
-    transform: translateY(0);
-  }
+body {
+  font-family: "Noto Sans JP", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #333;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.6s;
+  outline: none;
+}
+
+a:focus {
+  outline: none;
+}
+
+a:focus-visible {
+  outline: none;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+p:empty { display: none; }
+
+.mincho {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", serif;
+}
+
+/* Utility */
+.center { text-align: center; }
+.m0-b { margin-bottom: 0 !important; }
+.m30-t { margin-top: 3rem; }
+.m30-b { margin-bottom: 3rem; }
+.p40-b { padding-bottom: 4rem; }
+
+.br-auto { display: inline-block; }
+
+@media (min-width: 768px) {
+  .sp { display: none !important; }
+}
+@media (max-width: 767px) {
+  .pc { display: none !important; }
+}
+
+.yellow-underline {
+  background: linear-gradient(transparent 85%, var(--yellow) 85%);
+}
+.blue-underline {
+  background: linear-gradient(transparent 85%, #a8d8ea 85%);
+}
+.text-red {
+  color: var(--red);
+  font-weight: bold;
+}
+
+/* ===== LP Wrapper ===== */
+.lp-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+
+.lp-content {
+  background: #fff;
+}
+
+/* ===== Header ===== */
+.h1_title {
+  background: var(--pink);
+  width: 100%;
+}
+
+.h1_title h1 {
+  color: white !important;
+  font-size: 1.3rem !important;
+  display: block;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0.3rem 1rem;
+  font-weight: 400;
+}
+
+/* ===== HPB Banner ===== */
+.hpb-bn {
+  padding: 0;
+}
+
+/* ===== Campaign Banner ===== */
+.campaign {
+  padding: 0 40px;
+}
+
+/* ===== LINE Button ===== */
+.line-btn {
+  padding: 0 40px;
+}
+
+.line-bn {
+  padding: 0 40px;
+}
+
+.line-bn-katagihara {
+  padding: 0;
+}
+
+/* ===== Gray Title ===== */
+.gray-ttl {
+  background: linear-gradient(#919191, #575757) !important;
+  padding: 1.5rem;
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+  text-align: center;
+  font-size: 2.6rem !important;
+  color: white;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.4;
+}
+
+/* ===== FV ===== */
+.fv-clinic-name {
+  background: linear-gradient(#625D5A, #28211C);
+  padding: 5px 0;
+}
+
+.fv-clinic-name-inner {
+  background: linear-gradient(#625D5A, #28211C);
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
+  text-align: center;
+  font-size: 3rem !important;
+  color: white;
+  padding: 1rem 1.5rem 1.6rem;
+}
+
+/* ===== Problem Section ===== */
+.problem {
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/problem-bg-pc.webp);
+  background-size: cover;
+  background-position: bottom;
+  margin-top: 5rem;
+}
+
+.problem h2 {
+  margin-bottom: 0;
+}
+
+.problem ul {
+  margin: 0 !important;
+  padding: 3rem 3rem 7rem 4rem;
+  list-style: none;
+}
+
+.problem li {
+  position: relative;
+  padding-left: 34px;
+  list-style: none;
+  font-size: 2rem;
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+  margin-bottom: 0.5rem;
+}
+
+.problem li:before {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  content: "";
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/diet7-check.png);
+  background-size: cover;
+  width: 25px;
+  height: 20px;
+}
+
+/* ===== Not Failure ===== */
+.not-failure {
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/diet7-can-change.webp);
+  background-position: bottom;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 0 2rem 30rem;
+  text-align: center;
+}
+
+.not-failure h2, .not-failure p {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.not-failure h2 {
+  height: 50px;
+  color: #333;
+  background: white;
+  font-weight: 400;
+  border-bottom: dotted 2px var(--red);
+  margin: 0 8rem 3rem;
+  position: relative;
+  padding: 1rem 1.5rem 0.3rem;
+  font-size: 2rem !important;
+  text-align: center;
+}
+
+.not-failure h2::before, .not-failure h2::after {
+  position: absolute;
+  top: 0.8rem;
+  height: 3rem;
+  content: '';
+}
+
+.not-failure h2::before {
+  border-left: solid 1px;
+  left: 0;
+  transform: rotate(-30deg);
+}
+
+.not-failure h2::after {
+  border-right: solid 1px;
+  right: 0;
+  transform: rotate(30deg);
+}
+
+.not-failure p {
+  font-size: 2.3rem !important;
+  line-height: 1.6;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.not-failure p span {
+  color: var(--red);
+}
+
+/* ===== 3 Steps ===== */
+.step3 {
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/light-pink-bg-scaled.webp);
+  background-size: cover;
+  padding-bottom: 1rem;
+}
+
+.triangle {
+  clip-path: polygon(50% 60%, 0 0, 100% 0);
+  background: #E75D57;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.step3 h2 {
+  background: linear-gradient(#F0948D, #E75D57) !important;
+  font-size: 2.6rem !important;
+  padding: 2rem 1rem 1.4rem;
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+  color: white;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.step3-item {
+  counter-reset: step3;
+  margin: 0 !important;
+  padding: 0;
+  list-style: none;
+}
+
+.step3-item li {
+  list-style: none;
+}
+
+.step3-item h3 {
+  position: relative;
+  border: none;
+  color: #333;
+  font-size: 2.4rem !important;
+  margin-bottom: 5px !important;
+  padding: 0;
+  margin-top: 2rem !important;
+}
+
+.step3-item h3:before {
+  position: absolute;
+  content: "STEP";
+  top: -3rem;
+  left: 0;
+  color: #F4777C;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.6rem;
+}
+
+.step3-item h3:after {
+  content: counter(step3, decimal-leading-zero);
+  counter-increment: step3;
+  color: #F4777C;
+  font-size: 5rem;
+  position: absolute;
+  top: -3.8rem;
+  left: 5.5rem;
+  font-family: "Kristi", cursive;
+}
+
+.step3-item {
+  padding: 0 3.8rem;
+}
+
+.step3-item img {
+  width: 75%;
+}
+
+.step3-item p {
+  font-size: 1.9rem !important;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* ===== Planning ===== */
+.planning {
+  padding: 3.6rem 3.6rem 0.1rem;
+  margin: 7rem 3.6rem 3.6rem;
+  box-shadow: 0 0 6px #eae5e3;
+  background: white;
+}
+
+.planning h3, p.dr-name {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.ttl-border {
+  padding-top: 0.3rem;
+  border-top: solid 2px #886503;
+}
+
+.planning h3 {
+  border-top: solid 1px #886503;
+  border-bottom: solid 1px #886503;
+  text-align: center;
+  color: #886503;
+  font-size: 2.6rem !important;
+  font-weight: 400;
+  padding: 1.7rem 0;
+  margin-bottom: 1.4rem !important;
+  margin-top: 0 !important;
+}
+
+p.dr-name {
+  text-align: center;
+  font-size: 2.4rem !important;
+  margin: 1rem 0 !important;
+}
+
+.dr-name span {
+  font-size: 2rem !important;
+}
+
+.planning-text {
+  text-align: justify;
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+/* ===== Anxiety ===== */
+.anxiety {
+  margin-top: 0;
+  text-align: center;
+}
+
+.anxiety img {
+  width: 70%;
+  padding-top: 3rem;
+  margin: 0 auto;
+}
+
+/* ===== Customer (Before/After) ===== */
+.customer {
+  padding: 3.6rem;
+  position: relative;
+  margin: 4rem 0 2rem;
+}
+
+ul.customer-item {
+  margin: 0 !important;
+  counter-reset: customer;
+  padding: 0;
+  list-style: none;
+}
+
+.customer-item li {
+  padding: 2.5rem 1.5rem 0;
+  list-style: none;
+  position: relative;
+  box-shadow: 0 2px 2px gray;
+  background: #F7F7F7;
+  margin-bottom: 10rem;
+}
+
+.customer-item li:last-of-type {
+  margin-bottom: 0;
+}
+
+.customer-item li:after {
+  content: counter(customer, decimal-leading-zero);
+  counter-increment: customer;
+  position: absolute;
+  left: 50%;
+  top: -1.5rem;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 3.4rem;
+  font-weight: bold;
+}
+
+.customer-item li:before {
+  content: "";
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/ba-number.webp);
+  background-size: cover;
+  width: 11rem;
+  height: 11rem;
+  top: -6.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+.customer-ba {
+  display: flex;
+}
+
+.customer-ba-img {
+  margin: 2rem 1rem 1rem;
+  position: relative;
+  flex: 1;
+}
+
+.customer-ba-img img {
+  width: 100%;
+}
+
+.customer-ba-img-value {
+  position: absolute;
+  color: white;
+  text-align: center;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  bottom: -2rem;
+  right: -1rem;
+  background: linear-gradient(to bottom, #C1272D, #E3787B, #C1272D);
+  font-family: "Oswald", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(15deg);
+}
+
+.customer-ba-img-value p {
+  margin-bottom: 0 !important;
+  font-size: 2rem !important;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.customer-report {
+  text-align: center;
+  margin-top: 4rem;
+  position: relative;
+}
+
+.customer-report:before {
+  position: absolute;
+  content: "";
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/diet7-arrow-1.webp);
+  background-size: cover;
+  width: 11rem;
+  height: 3.6rem;
+  top: -25rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.customer-report-ttl {
+  padding: 5px 10px;
+  border-bottom: solid 2px #B19946;
+  color: var(--red) !important;
+  font-size: 2.4rem !important;
+  margin-bottom: 0 !important;
+}
+
+p.customer-report-name {
+  font-size: 2rem !important;
+  padding-top: 0.5rem;
+  margin-bottom: 1.5rem !important;
+}
+
+.customer-report-detail {
+  padding: 0 1rem 30px;
+  line-height: 1.6;
+}
+
+.customer-report-detail p {
+  margin-bottom: 0 !important;
+  font-size: 1.8rem !important;
+  text-align: justify;
+}
+
+.customer-report-detail span {
+  font-weight: bold;
+  color: var(--red);
+}
+
+p.customer-report-note {
+  color: gray !important;
+  font-size: 90% !important;
+  padding-top: 10px;
+  text-align: right;
+}
+
+/* ===== Modal ===== */
+.modal-open {
+  display: inline-block;
+}
+
+.modal-open a {
+  display: inline-block;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.modal:not(:target) {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.modal:target {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.modal .overlay {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+}
+
+.modal-wrapper {
+  width: 100%;
+  max-width: 650px;
+  min-width: 300px;
+  height: 100%;
+  max-height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-contents {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.modal-content {
+  margin: 25px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.4rem;
+}
+
+/* ===== Keep Style ===== */
+.keep-style {
+  background: linear-gradient(#F89195, #C1272D);
+  text-align: center;
+  font-size: 2.4rem !important;
+  color: white;
+  padding: 1.5rem 1rem;
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+/* ===== Why Section ===== */
+.why {
+  margin: 5rem 0 0;
+  text-align: center;
+}
+
+.why-block1 {
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/diet7-why-bg-img1-2.webp);
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-size: 3rem !important;
+}
+
+.why-block1-overlay {
+  background: rgba(56,60,60,0.7);
+  padding: 4rem 2rem;
+}
+
+.why-block1 p {
+  font-size: 2.4rem !important;
+  margin-bottom: 0 !important;
+}
+
+.why-block1-white {
+  margin: 3.6rem 0 2.2rem;
+}
+
+.why-block1-white p {
+  background: white;
+  color: #333;
+  display: inline-block;
+  margin-bottom: 1.1rem !important;
+  padding: 0.2rem 0.5rem;
+}
+
+.why-block2 {
+  font-size: 3rem !important;
+  background: #28211C;
+  color: #FFF39B;
+  padding: 6rem 0 2rem;
+  position: relative;
+}
+
+.why-block2 p {
+  font-size: 2.8rem !important;
+  font-weight: bold;
+}
+
+p.why-block2-rotate {
+  position: absolute;
+  color: white;
+  font-size: 2rem !important;
+  transform: rotate(-0.02turn);
+  top: 2.5rem;
+  left: 4rem;
+  font-weight: 400;
+}
+
+.why-dot {
+  width: 50%;
+  height: 8rem;
+  position: absolute;
+  bottom: -4.5rem;
+  background-image: linear-gradient(to right, white 0px, transparent 0px), linear-gradient(to bottom, white 2px, transparent 2px), linear-gradient(to left, white 0px, transparent 0px), linear-gradient(to top, white 0px, transparent 0px);
+  background-size: 8px 2px, 2px 8px, 8px 2px, 2px 8px;
+  background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+  background-position: left top, right 0px, 3px bottom, left 7px;
+  margin-bottom: 1rem;
+}
+
+.why-block3 {
+  padding: 4rem 0 5.5rem;
+  background: rgba(136,127,122,0.8);
+  color: white;
+}
+
+.why-block3 p {
+  font-size: 2.4rem !important;
+  border-bottom: solid 1px;
+  display: inline-block;
+  margin-bottom: 0 !important;
+}
+
+.why-block3 span {
+  color: var(--yellow);
+}
+
+.why-block4 {
+  position: relative;
+  padding: 6rem 0 0;
+}
+
+.why-block4 span {
+  color: var(--red);
+}
+
+.why-block4 p {
+  font-size: 2.3rem !important;
+  font-weight: bold;
+}
+
+.why-block4-but {
+  clip-path: polygon(100% 0, 100% 70%, 51% 100%, 0 70%, 0 1%);
+  background: var(--yellow);
+  width: 20%;
+  height: 5.6rem;
+  margin: 0 auto;
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-block4-but p {
+  font-size: 1.6rem !important;
+  font-weight: normal;
+}
+
+.why-block5 {
+  padding: 2rem 0 0;
+}
+
+/* ===== Never Give Up ===== */
+.never-giveup {
+  text-align: center;
+  background: #F8F8F8;
+}
+
+.never-giveup-block1 {
+  color: white;
+}
+
+.never-giveup-block1-bg {
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/never-giveup-bg.webp);
+  background-position: bottom;
+  background-size: cover;
+  padding: 3.6rem 0 8rem;
+}
+
+.never-giveup-block1 p {
+  font-size: 2.4rem !important;
+  margin-bottom: 0 !important;
+}
+
+.never-giveup-block1 span {
+  font-weight: bold;
+  background: linear-gradient(transparent 85%, var(--yellow) 85%);
+}
+
+.yellow-text {
+  color: var(--yellow);
+  background: none !important;
+}
+
+.never-giveup-block1-black {
+  margin: 3.6rem 0 2.2rem;
+}
+
+.never-giveup-block1-black p {
+  background: #333;
+  display: inline-block;
+  margin-bottom: 1.1rem !important;
+  padding: 0.2rem 0.5rem;
+}
+
+.never-giveup-block2 {
+  padding: 3rem 2rem 1rem;
+}
+
+.never-giveup-block2 p {
+  font-size: 2.4rem !important;
+  margin-bottom: 2rem !important;
+  color: #333;
+}
+
+.never-giveup-block2 span {
+  color: var(--red);
+}
+
+.bg-white {
+  background: white;
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+}
+
+/* ===== Easy Diet ===== */
+.easy-diet {
+  background: linear-gradient(#E85F58, #EF928B);
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+.easy-diet h2, .easy-diet p {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.easy-diet h2 {
+  background: none !important;
+  color: var(--yellow);
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+
+.easy-diet p {
+  color: white;
+  font-size: 2.3rem !important;
+  margin-bottom: 1.4rem !important;
+}
+
+/* ===== Leave (お任せください) ===== */
+.leave {
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/leave-bg.webp);
+  padding: 3rem;
+  text-align: center;
+}
+
+.leave h3, .leave p {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.leave h3 {
+  color: #333;
+  border: none;
+  text-align: center;
+  font-size: 2.4rem !important;
+  background: linear-gradient(transparent 95%, #B19946 0%);
+  display: inline;
+  padding-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.leave-img {
+  margin-bottom: 1rem;
+}
+
+.leave-message {
+  border: solid 1px gray;
+  padding: 3rem;
+  background: white;
+  text-align: left;
+}
+
+.leave-message p {
+  margin-top: 2rem !important;
+  text-align: justify;
+  font-size: 1.9rem !important;
+  margin-bottom: 0 !important;
+}
+
+.leave-message-name {
+  font-weight: bold;
+  font-size: 2.2rem !important;
+  text-align: center;
+}
+
+.leave-message-qualifications {
+  font-size: 1.6rem !important;
+  text-align: center;
+  color: #666;
+}
+
+.dr-ba-img {
+  margin-top: 2rem;
+}
+
+/* ===== 3 Approach ===== */
+.approach3 h2, .approach3 h3, .approach3 p {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.approach3 {
+  background: #F0F0F0;
+  padding-bottom: 0.1rem;
+}
+
+.approach3-ttl {
+  background: linear-gradient(rgba(255,222,221,0.5), rgba(255,186,183,0.5));
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.approach3-ttl h2 {
+  font-size: 2.6rem !important;
+  background: none !important;
+  padding: 0;
+  color: #333;
+  font-weight: 400;
+  margin-bottom: 1rem !important;
+}
+
+.approach3-ttl p {
+  background: none;
+  color: #E84C44;
+  font-size: 3.6rem !important;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px white;
+  margin-bottom: 0 !important;
+}
+
+ul.approach3-item {
+  margin: 1rem !important;
+  border: solid 1px gray;
+  padding: 1rem 3rem 1rem;
+  position: relative;
+  list-style: none;
+  background: white;
+  counter-reset: approach;
+}
+
+.approach3-item h3 {
+  border: none;
+  font-size: 2.4rem !important;
+  color: #333;
+  font-weight: 400;
+  margin-left: 6rem !important;
+}
+
+.approach3-item h3:before {
+  content: "";
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/approach-number-circle.png);
+  background-size: cover;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  left: 0;
+}
+
+.approach3-item p {
+  font-size: 1.9rem !important;
+  margin-bottom: 2rem !important;
+  text-align: justify;
+}
+
+.approach3-item img {
+  margin-bottom: 3rem;
+  box-shadow: 8px 8px 0 white;
+}
+
+.approach3-item li {
+  list-style: none;
+  border-bottom: solid 1px gray;
+  position: relative;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.approach3-item li:last-of-type {
+  border-bottom: none;
+}
+
+.approach3-item li:after {
+  content: counter(approach, decimal-leading-zero);
+  counter-increment: approach;
+  font-size: 2.6rem;
+  position: absolute;
+  left: 1.1rem;
+  top: 1.6rem;
+  color: white;
+  font-family: serif;
+}
+
+.approach3-comparison img {
+  box-shadow: none;
+}
+
+.approach3-triangle1, .approach3-triangle2, .approach3-triangle3, .approach3-triangle4 {
+  width: 2rem;
+  height: 2rem;
+  background: #333;
+  position: absolute;
+}
+
+.approach3-triangle1 {
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
+.approach3-triangle2 {
+  clip-path: polygon(0 0, 100% 100%, 100% 0);
+  top: -0.5rem;
+  right: -0.5rem;
+}
+
+.approach3-triangle3 {
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+  bottom: -0.5rem;
+  left: -0.5rem;
+}
+
+.approach3-triangle4 {
+  clip-path: polygon(0 100%, 100% 100%, 100% 1%);
+  bottom: -0.5rem;
+  right: -0.5rem;
+}
+
+/* ===== Improvement ===== */
+.improvement {
+  text-align: center;
+}
+
+.improvement p, .improvement ul, .long3month p {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.improvement-received {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 330px;
+  height: 70px;
+  padding: 0 40px;
+  box-sizing: border-box;
+  margin-top: 2rem;
+}
+
+.improvement-received p {
+  text-align: center;
+  font-size: 2rem !important;
+  margin-top: 4rem;
+  background: linear-gradient(transparent 75%, var(--yellow) 75%);
+  display: inline-block;
+  position: relative;
+  padding: 0;
+}
+
+.improvement-received p::before, .improvement-received p::after {
+  position: absolute;
+  top: 0.5rem;
+  height: 2rem;
+  content: '';
+}
+
+.improvement-received p::before {
+  border-left: solid 1px;
+  left: 0;
+  transform: rotate(-30deg);
+}
+
+.improvement-received p::after {
+  border-right: solid 1px;
+  right: 0;
+  transform: rotate(30deg);
+}
+
+.improvement ul {
+  margin: 0.5rem 15% 3rem;
+  font-size: 2.1rem;
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+
+.improvement li {
+  position: relative;
+  padding-left: 34px;
+  list-style: none;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+.improvement li:before {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  content: "";
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/diet7-check.png);
+  background-size: cover;
+  width: 25px;
+  height: 20px;
+}
+
+.long3month {
+  text-align: center;
+  padding: 5rem;
+}
+
+.long3month p {
+  font-size: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.long3month span {
+  color: var(--red);
+  font-size: 2.4rem;
+}
+
+p.long3month-ttl {
+  font-size: 3rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.long3month-dot {
+  width: 50%;
+  height: 8rem;
+  background-image: linear-gradient(to right, white 2px, transparent 2px), linear-gradient(to bottom, #000 2px, transparent 2px), linear-gradient(to left, white 2px, transparent 2px), linear-gradient(to top, white 2px, transparent 2px);
+  background-size: 8px 2px, 2px 8px, 8px 2px, 2px 8px;
+  background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+  background-position: left top, right 0px, 3px bottom, left 7px;
+  margin: 0 auto 1rem;
+}
+
+/* ===== LINE OK ===== */
+.line-ok {
+  padding: 1rem 3.6rem;
+  text-align: center;
+}
+
+.line-ok p, .line-ok ul {
+  padding: 2rem 3.6rem;
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.line-ok p {
+  display: inline-block;
+  font-size: 2.4rem !important;
+  margin-bottom: 0 !important;
+  padding: 3rem 0 0;
+  background: linear-gradient(transparent 85%, var(--yellow) 85%);
+}
+
+.line-ok ul {
+  text-align: left;
+  font-size: 2rem;
+  margin: 0 2rem;
+  padding-bottom: 0;
+  line-height: 1.4;
+}
+
+/* ===== First Counseling ===== */
+.first-counseling {
+  margin-top: 5rem;
+}
+
+.first-counseling-block1, .first-counseling-block2 p {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.first-counseling-block1 {
+  padding: 0 10%;
+  font-size: 2rem;
+}
+
+.first-counseling-block1 ul {
+  margin: 4rem 6% 0.5rem;
+  font-size: 2.1rem;
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+
+.first-counseling-block1 li {
+  position: relative;
+  padding-left: 34px;
+  list-style: none;
+  font-size: 2rem;
+}
+
+.first-counseling-block1 li:before {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  content: "";
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/diet7-check.png);
+  background-size: cover;
+  width: 25px;
+  height: 20px;
+}
+
+.first-counseling-list-note {
+  line-height: 1.4;
+  padding-left: 6rem;
+  font-size: 1.6rem;
+}
+
+.first-counseling-block2 {
+  text-align: center;
+  background: #F8F8F8;
+  padding: 3rem;
+}
+
+.first-counseling-block2 p {
+  font-size: 1.9rem !important;
+  margin-bottom: 0 !important;
+}
+
+.first-counseling-block2 span {
+  color: var(--red);
+}
+
+/* ===== Flow ===== */
+.flow {
+  padding: 3.6rem 3.6rem 5rem;
+  background: #F8F8F8;
+}
+
+ul.flow-item {
+  margin: 0 !important;
+  padding: 0;
+  list-style: none;
+  counter-reset: flow;
+}
+
+.flow-item li {
+  background: white;
+  list-style: none;
+  position: relative;
+  margin-bottom: 5rem;
+  box-shadow: 0 1px 2px #d3cbc6;
+}
+
+.flow-item li:after {
+  content: counter(flow, decimal-leading-zero) ".";
+  counter-increment: flow;
+  font-size: 2.6rem;
+  position: absolute;
+  left: 1.1rem;
+  top: 1rem;
+  color: white;
+  font-family: serif;
+}
+
+.flow-item h3, .flow-item p {
+  font-family: "Noto Serif JP", "游明朝", YuMincho, serif;
+}
+
+.flow-item img {
+  padding: 0 2rem 1rem;
+}
+
+.flow-item h3 {
+  background: #625D5A;
+  border: none;
+  color: white;
+  padding: 1rem 1rem 1rem 5.6rem;
+  margin: 0 !important;
+  font-size: 2.2rem !important;
+}
+
+.flow-item p {
+  font-size: 1.85rem !important;
+  padding: 0 2rem 1rem;
+  margin-bottom: 0 !important;
+  text-align: justify;
+}
+
+.flow-triangle {
+  clip-path: polygon(100% 2%, 0 0, 50% 100%);
+  background: white;
+  width: 5rem;
+  height: 2rem;
+  position: absolute;
+  bottom: -1.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flow-triangle-shadow {
+  filter: drop-shadow(0 2px 2px rgba(211,203,198,0.5));
+}
+
+.flow-triangle-shadow-cover {
+  clip-path: polygon(100% 2%, 0 0, 50% 100%);
+  background: white;
+  width: 5rem;
+  height: 2rem;
+  position: absolute;
+  bottom: -1.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ===== Q&A ===== */
+.qa {
+  background: #F8F8F8;
+  padding: 3rem;
+}
+
+.qa details {
+  background: white;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  text-align: justify;
+  padding: 2rem;
+}
+
+.qa details p {
+  margin: 0 !important;
+  position: relative;
+  padding: 1rem 1rem 0.8rem 5rem;
+  font-size: 1.9rem !important;
+  border-top: solid 1px gray;
+}
+
+.qa details p:before {
+  position: absolute;
+  top: 0.6rem;
+  left: 1.2rem;
+  content: "A.";
+  color: darkgray;
+  font-size: 3.2rem;
+}
+
+.qa details summary {
+  padding: 0.5rem 5rem 0.8rem 5rem;
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+  list-style: none;
+}
+
+.qa details summary::-webkit-details-marker {
+  display: none;
+}
+
+.qa details summary::marker {
+  display: none;
+  content: "";
+}
+
+.qa details summary::before {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.8rem;
+  content: "Q.";
+  font-size: 3rem;
+  color: var(--red);
+  font-family: "Noto Serif JP", serif;
+}
+
+.qa details summary::after {
+  content: "";
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/diet7-plus.png);
+  background-size: cover;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 5px;
+  right: 1rem;
+  font-size: 2rem;
+}
+
+.qa details[open] summary::after {
+  content: "";
+  background: url(https://diet-seikotu-seitai.com/sample/wp-content/uploads/2024/02/diet7-minus.png);
+  background-size: cover;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2rem;
+}
+
+/* ===== Access ===== */
+.access {
+  margin-bottom: 2rem;
+}
+
+.clinic-prof {
+  padding: 1rem 3rem;
+}
+
+.clinic-prof table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.clinic-prof th, .clinic-prof td {
+  border: solid 1px #96918E;
+  padding: 1rem;
+}
+
+.clinic-prof th {
+  font-size: 2rem;
+  width: 25%;
+  background: #625D5A;
+  color: white;
+}
+
+.clinic-prof td {
+  font-size: 2rem;
+}
+
+/* ===== Contact ===== */
+.contact {
+  padding-top: 3rem;
+}
+
+/* ===== CTA Buttons ===== */
+.cta-buttons {
+  padding: 2rem 0;
+}
+
+/* ===== Footer ===== */
+.lp-footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.4rem;
+}
+
+/* ===== Floating CTA Button ===== */
+.footer-btn {
+  display: block;
+  position: fixed;
+  bottom: 6px;
+  right: 10px;
+  width: 400px;
+  z-index: 1000;
+  transition: all 0.6s;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.footer-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.footer-btn:hover {
+  transform: scale(1.04);
+}
+
+/* ===== CTA Animation ===== */
 @keyframes ctaPulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(244, 119, 124, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 15px rgba(244, 119, 124, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(244, 119, 124, 0);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 @keyframes ctaGlow {
-  0%, 100% {
-    filter: drop-shadow(0 4px 12px rgba(244, 119, 124, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 8px 24px rgba(244, 119, 124, 0.6));
-  }
+  0%, 100% { box-shadow: 0 0 5px rgba(244, 119, 124, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(244, 119, 124, 0.6), 0 0 40px rgba(244, 119, 124, 0.3); }
 }
 
-.cta-bounce {
-  animation: ctaBounce 3s ease-in-out infinite, ctaGlow 2s ease-in-out infinite;
-  border-radius: 16px;
+.footer-btn.visible img {
+  animation: ctaPulse 2s ease-in-out infinite;
 }
 
-.cta-bounce:hover {
-  animation: none;
-  filter: drop-shadow(0 8px 24px rgba(244, 119, 124, 0.6));
+.footer-btn.visible a {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: ctaGlow 2s ease-in-out infinite;
+}
+
+/* ===== SP Responsive ===== */
+@media (max-width: 768px) {
+  .gray-ttl {
+    font-size: clamp(2rem, 5.5vw, 2.6rem) !important;
+  }
+
+  .campaign {
+    padding: 0 5%;
+  }
+
+  .line-btn {
+    padding: 0 5%;
+  }
+
+  .line-bn {
+    padding: 0 5%;
+  }
+
+  .problem ul {
+    padding: 3rem 2rem 5rem 3rem;
+  }
+
+  .problem li {
+    font-size: 4.5vw;
+  }
+
+  .not-failure h2 {
+    margin: 0;
+    font-size: 4.5vw !important;
+  }
+
+  .not-failure p {
+    font-size: 5vw !important;
+  }
+
+  .not-failure {
+    padding: 0 2rem 20rem;
+  }
+
+  .step3 h2 {
+    font-size: 5.5vw !important;
+  }
+
+  .step3-item h3 {
+    margin-top: 5rem !important;
+  }
+
+  .planning {
+    padding: 3.6rem 2rem 0.1rem;
+    margin: 7rem 5% 3.6rem;
+  }
+
+  .planning h3 {
+    font-size: 4.6vw !important;
+    padding: 1rem 0;
+  }
+
+  .customer {
+    padding: 3.6rem 5%;
+  }
+
+  .customer-item li {
+    padding: 2.5rem 1rem 0;
+  }
+
+  .customer-report-ttl {
+    font-size: 5.5vw !important;
+  }
+
+  p.customer-report-name {
+    font-size: 4.5vw !important;
+  }
+
+  .customer-report-detail p {
+    font-size: 4.5vw !important;
+  }
+
+  .why-block1 p {
+    font-size: 5vw !important;
+  }
+
+  .why-block2 p {
+    font-size: 5.5vw !important;
+  }
+
+  p.why-block2-rotate {
+    font-size: 4vw !important;
+    left: 3rem;
+  }
+
+  .why-block3 p {
+    font-size: 5.3vw !important;
+  }
+
+  .why-block4-but {
+    width: 30%;
+  }
+
+  .why-block4 p {
+    font-size: 4.5vw !important;
+  }
+
+  .never-giveup-block1 p {
+    font-size: 4.6vw !important;
+  }
+
+  .never-giveup-block1-black p {
+    font-size: 4.3vw !important;
+  }
+
+  .never-giveup-block2 p {
+    font-size: 5vw !important;
+  }
+
+  .leave {
+    padding: 3rem 5%;
+  }
+
+  .leave-message {
+    padding: 2rem;
+  }
+
+  .leave h3 {
+    font-size: 5vw !important;
+  }
+
+  .leave-message p {
+    font-size: 4.3vw !important;
+  }
+
+  .approach3-ttl p {
+    font-size: 6.8vw !important;
+  }
+
+  .approach3-item p {
+    font-size: 4.6vw !important;
+  }
+
+  .improvement ul {
+    margin: 0.5rem 5% 3rem;
+  }
+
+  .improvement li {
+    font-size: 4.8vw;
+  }
+
+  .long3month {
+    padding: 5rem 5%;
+  }
+
+  .long3month p {
+    font-size: 4.5vw !important;
+  }
+
+  p.long3month-ttl {
+    font-size: 7vw !important;
+  }
+
+  .long3month-dot {
+    height: 5rem;
+  }
+
+  .line-ok {
+    padding: 1rem 5%;
+  }
+
+  .line-ok ul {
+    font-size: 4.3vw;
+    padding: 0;
+    margin-right: 0 !important;
+    margin-top: 3rem;
+  }
+
+  .first-counseling-block1 {
+    padding: 0 5%;
+  }
+
+  .first-counseling-block2 {
+    padding: 3rem 5%;
+  }
+
+  .first-counseling-block2 p {
+    font-size: 4.5vw !important;
+  }
+
+  .flow {
+    padding: 3rem 5%;
+  }
+
+  .flow-item h3 {
+    font-size: 5vw !important;
+  }
+
+  .flow-item p {
+    font-size: 4.3vw !important;
+  }
+
+  .qa {
+    padding: 3rem 5%;
+  }
+
+  .qa details summary {
+    font-size: 4.5vw;
+  }
+
+  .qa details p {
+    font-size: 4vw !important;
+  }
+
+  .clinic-prof {
+    padding: 1rem 5%;
+  }
+
+  .clinic-prof th {
+    font-size: 4vw;
+    width: 30%;
+  }
+
+  .clinic-prof td {
+    font-size: 4vw;
+  }
+
+  .footer-btn {
+    bottom: 0%;
+    right: 0%;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .anxiety img {
+    width: 90%;
+  }
 }
